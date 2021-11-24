@@ -1,6 +1,3 @@
-Use following command to run ruby script
-```
-ruby hello.rb
-```
+## CDG Ruby course practice
 
-Yet another change
+run tests - ```make test```
