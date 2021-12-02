@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require 'rspec'
-require_relative '../../task_2/greeting'
+require_relative '../../src/task_2/greeting'
 
 RSpec.describe 'greeting' do
   test_data = [
