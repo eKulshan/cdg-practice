@@ -20,7 +20,7 @@ RSpec.describe 'move_users' do
     File.write(result_file.path, '')
   end
 
-  after(:all) do
+  after(:example) do
     File.unlink(users_file.path)
     File.unlink(result_file.path)
   end
@@ -110,7 +110,7 @@ RSpec.describe 'move_users' do
     it name do
       get_message(:actions_tip)
       allow_any_instance_of(Kernel).to receive(:gets).and_return(*args)
-      stdout = capture_stdout { move_users(source, destination) }
+      stdout = capture_stdout { UserMover.new(source, destination).move_users }
 
       expect(File.read(destination).split("\n")).to eq(file_content)
       expect(stdout).to eq(console_output)

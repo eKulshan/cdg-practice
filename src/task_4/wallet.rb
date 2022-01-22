@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+require 'pry'
 
 def get_message(name, data = nil)
   messages = {
@@ -8,11 +9,11 @@ def get_message(name, data = nil)
              '  - D(d) - deposit money',
              '  - W(w) - withdraw money',
              '  - Q(q) - save balance and quit'].join("\n"),
-    action: 'Enter action please > ',
+    action: 'Enter action please >',
     balance: "Your balance is #{data}$",
-    deposit_tip: "Please enter value greater than 0 or type '-1' for exit from transaction > ",
+    deposit_tip: 'Please enter value greater than 0 or type -1 for exit from transaction >',
     withdraw_tip: ["Please enter value between 0 and #{data}.",
-                   'Or enter -1 for exit from transaction > '].join("\n"),
+                   'Or enter -1 for exit from transaction >'].join("\n"),
     deposited: "Deposited #{data}$",
     withdrawed: "Withdrawed #{data}$",
     no_action_tip: "There is no such action as '#{data}'. Please refer to manual(h) for help."
@@ -46,7 +47,7 @@ def wallet(balanse_file_dir = __dir__)
       puts get_message(:balance, balance)
     when 'd'
       until value == -1 || value.positive?
-        print get_message(:deposit_tip)
+        puts get_message(:deposit_tip)
         value = gets.to_f
       end
       next if value == -1
@@ -55,8 +56,9 @@ def wallet(balanse_file_dir = __dir__)
       puts get_message(:deposited, value)
       puts get_message(:balance, balance)
     when 'w'
-      until value == -1 || value.between?(1, balance)
-        print get_message(:withdraw_tip, balance)
+
+      until value == -1 || value.between?(0.01, balance)
+        puts get_message(:withdraw_tip, balance)
         value = gets.to_f
       end
       next if value == -1
@@ -72,3 +74,5 @@ def wallet(balanse_file_dir = __dir__)
     end
   end
 end
+
+# wallet

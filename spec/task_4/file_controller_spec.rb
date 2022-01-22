@@ -63,7 +63,7 @@ RSpec.describe FileController do
     File.write(file.path, file_data)
   end
 
-  after(:suite) do
+  after(:example) do
     File.unlink(file.path)
   end
 
