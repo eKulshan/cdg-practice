@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ATM - deposit</title>
+</head>
+<body>
+  <h3>Deposit</h3>
+  <p>Please enter value greater than <b>0</b> or equal to <b>500</b>:</p>
+  <form method="post" name="deposit_input">
+    <div>
+      <label for="value">Value to deposit:</label>
+      <input type="number" name="value" placeholder="10" step="0.1" min="0" max="500" required>
+      <span class="validity"></span>
+    </div>
+    <div>
+      <input type="submit" value="Deposit">
+    </div>
+    <div>
+      <a href="/">Home</a>
+      <a href="/balance">Balance</a>
+      <a href="/withdraw">Withdraw</a>
+    </div>
+  </form>
+</body>
+</html>

@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'rack/test'
+
 module Helper
   def help
     :available
@@ -20,8 +22,9 @@ end
 
 RSpec.configure do |config|
   config.include Helper
+  config.include Rack::Test::Methods
 
-  # config.before { allow($stdout).to receive(:write) }
+  config.before { allow($stdout).to receive(:write) }
   config.filter_run focus: true
   config.run_all_when_everything_filtered = true
   config.default_formatter = 'doc'
